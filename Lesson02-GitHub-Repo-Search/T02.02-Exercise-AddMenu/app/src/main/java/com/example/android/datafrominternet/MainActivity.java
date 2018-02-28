@@ -15,10 +15,16 @@
  */
 package com.example.android.datafrominternet;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.MenuRes;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
         mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main , menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int menuItemThatWasSelected = item.getItemId();
+        if(menuItemThatWasSelected == R.id.action_search){
+            Context context = MainActivity.this;
+            String msg = "Search Clicked";
+            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     // Do 2 - 7 in menu.xml ///////////////////////////////////////////////////////////////////////
     // TODO (2) Create a menu xml called 'main.xml' in the res->menu folder
     // TODO (3) Add one menu item to your menu
@@ -52,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     // TODO (8) Override onCreateOptionsMenu
     // TODO (9) Within onCreateOptionsMenu, use getMenuInflater().inflate to inflate the menu
     // TODO (10) Return true to display your menu
+
 
     // TODO (11) Override onOptionsItemSelected
     // TODO (12) Within onOptionsItemSelected, get the ID of the item that was selected
